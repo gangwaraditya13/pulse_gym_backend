@@ -1,12 +1,12 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /build
 
-COPY gym_admin\pom.xml .
-COPY gym_admin/.mvn .mvn
-COPY gym_admin/mvnw .
+COPY pom.xml .
+COPY .mvn .mvn
+COPY mvnw .
 RUN chmod +x mvnw
 
-COPY gym_admin/src ./src
+COPY src ./src
 RUN ./mvnw -B clean package -DskipTests
 
 FROM eclipse-temurin:21-jdk-jammy
