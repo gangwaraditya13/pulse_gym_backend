@@ -14,7 +14,6 @@ import java.util.HashMap;
 @Document(collection = "gym_info")
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class GymInfo {
     @Id
     private ObjectId id;
