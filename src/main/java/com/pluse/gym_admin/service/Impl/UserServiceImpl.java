@@ -187,8 +187,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseUser getAdmin() {
-
-        User user = userRepository.findByrole("ADMIN").orElse(null);
+        //todo: fix the admin 403
+        User user = userRepository.findByRole("ADMIN")
+                .orElseThrow(() -> new RuntimeException("Admin user not found"));
 
         ResponseUser responseUser = new ResponseUser();
         responseUser.setId(user.getId());
