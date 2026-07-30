@@ -12,6 +12,7 @@ public interface UserService {
     public ResponseUser createAdmin(RequestUser requestUser);
 
     ResponseUser getUserByUserName(String userName);
+    ResponseUser getAdmin();
 
     ResponseUser updateUser(RequestUser requestUser) throws IOException;
 

@@ -184,4 +184,23 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public ResponseUser getAdmin() {
+
+        User user = userRepository.findByrole("ADMIN").orElse(null);
+
+        ResponseUser responseUser = new ResponseUser();
+        responseUser.setId(user.getId());
+        responseUser.setUserName(user.getUserName());
+        responseUser.setAbout(user.getAbout());
+        responseUser.setEmail(user.getEmail());
+        responseUser.setImageUrl(user.getImageUrl());
+        responseUser.setPublicId(user.getPublicId());
+        responseUser.setCreatedAt(user.getCreatedAt());
+        responseUser.setUpdateAt(user.getUpdateAt());
+        responseUser.setRole(user.getRole());
+
+        return responseUser;
+    }
 }

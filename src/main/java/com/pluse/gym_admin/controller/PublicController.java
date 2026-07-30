@@ -5,13 +5,12 @@ import com.pluse.gym_admin.Dto.ClientQueryMessageDto.ResponseClientQueryMessageD
 import com.pluse.gym_admin.Dto.HallOfFameDto.ResponseHallOfFameDto;
 import com.pluse.gym_admin.Dto.MemberShipDto.ResponseMembershipDto;
 import com.pluse.gym_admin.Dto.SpecializedTrainingDto.ResponseSpecializedTrainingDto;
-import com.pluse.gym_admin.service.ClientQueryMessagesService;
-import com.pluse.gym_admin.service.HallOfFameService;
-import com.pluse.gym_admin.service.MembershipService;
-import com.pluse.gym_admin.service.SpecializedTrainingService;
+import com.pluse.gym_admin.Dto.UserDto.ResponseUser;
+import com.pluse.gym_admin.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +30,22 @@ public class PublicController {
 
     @Autowired
     private MembershipService membershipService;
+
+    @Autowired
+    private UserService userService;
+
+
+    @GetMapping("/Admin")
+    public ResponseEntity<ResponseUser> getAdmin(){
+
+        ResponseUser user = userService.getAdmin();
+
+        if(user != null){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/hall-of-fame")
     public ResponseEntity<List<ResponseHallOfFameDto>> getAllHallOfFame(){
