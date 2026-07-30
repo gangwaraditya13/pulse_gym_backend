@@ -6,6 +6,7 @@ import com.pluse.gym_admin.Dto.HallOfFameDto.ResponseHallOfFameDto;
 import com.pluse.gym_admin.Dto.MemberShipDto.ResponseMembershipDto;
 import com.pluse.gym_admin.Dto.SpecializedTrainingDto.ResponseSpecializedTrainingDto;
 import com.pluse.gym_admin.Dto.UserDto.ResponseUser;
+import com.pluse.gym_admin.entity.GymInfo;
 import com.pluse.gym_admin.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,9 @@ public class PublicController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private GymInfoService gymInfoService;
+
 
     @GetMapping("/Admin")
     public ResponseEntity<ResponseUser> getAdmin(){
@@ -42,6 +46,18 @@ public class PublicController {
 
         if(user != null){
             return new ResponseEntity<>(user, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/gym-info")
+    public ResponseEntity<List<GymInfo>> getGymInfo(){
+
+        List<GymInfo> gymInfo = gymInfoService.getInfo();
+
+        if(gymInfo != null){
+            return new ResponseEntity<>(gymInfo, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
