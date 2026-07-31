@@ -11,9 +11,11 @@ import com.pluse.gym_admin.Dto.UserDto.RequestUser;
 import com.pluse.gym_admin.Dto.UserDto.ResponseUser;
 import com.pluse.gym_admin.service.*;
 import com.pluse.gym_admin.service.Impl.Cloudinary.CloudinaryImpl;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -46,12 +48,15 @@ public class AdminController {
     private CloudinaryImpl cloudinary;
 
     /// upload Image and get url and publicId, call before updateAdmin if image want to update, call before createHallOfFame
-    @PostMapping("/upload-image")
-    public ResponseEntity<Map<String, String>> uploadImage(MultipartFile multipartFile)throws IOException{
-        Map<String, String> stringStringMap = cloudinary.uploadImage(multipartFile);
+    @PostMapping(value = "/upload-image",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Map<String, String>> uploadImage(
+            @Parameter(description = "Image file")
+            @RequestPart MultipartFile multipartFile) throws IOException {
 
-        return new ResponseEntity<>(stringStringMap,HttpStatus.OK);
+        return ResponseEntity.ok(cloudinary.uploadImage(multipartFile));
     }
+
 
     /// manage Admin
     @PostMapping("/create/admin")
