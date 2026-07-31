@@ -88,7 +88,8 @@ public class MembershipServiceImpl implements MembershipService {
             membership.setUpdatedAt(LocalDateTime.now());
         }
 
-        ResponseMembershipDto responseMembershipDto = MembershipToResponseMembershipMapper.responseMembershipDto(membership);
+        Membership saved = membershipRepository.save(membership);
+        ResponseMembershipDto responseMembershipDto = MembershipToResponseMembershipMapper.responseMembershipDto(saved);
 
         return responseMembershipDto;
 

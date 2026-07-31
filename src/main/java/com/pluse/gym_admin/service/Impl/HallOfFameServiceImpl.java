@@ -92,14 +92,11 @@ public class HallOfFameServiceImpl implements HallOfFameService {
 
         if(isUpdate){
             HallOfFame saved = hallOfFameRepository.save(hallOfFame);
-
             ResponseHallOfFameDto hallOfFameDto1 = HallOfFameToResponseHallOfFameDtoMapper.responseHallOfFameDto(saved);
-
             return hallOfFameDto1;
-
         }
 
-        return null;
+        return HallOfFameToResponseHallOfFameDtoMapper.responseHallOfFameDto(hallOfFame);
     }
 
     @Override

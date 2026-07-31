@@ -76,13 +76,11 @@ public class SpecializedTrainingServiceImpl implements SpecializedTrainingServic
 
         if(isUpdate){
             SpecializedTraining saved = specializedTrainingRepository.save(specializedTraining);
-
             ResponseSpecializedTrainingDto responseSpecializedTrainingDto = SpecializedTrainingToResponseSpecializedTrainingMapper.responseSpecializedTrainingDto(saved);
             return responseSpecializedTrainingDto;
-
         }
 
-        return null;
+        return SpecializedTrainingToResponseSpecializedTrainingMapper.responseSpecializedTrainingDto(specializedTraining);
     }
 
     @Override
