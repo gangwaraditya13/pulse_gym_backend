@@ -32,7 +32,7 @@ public class HallOfFameServiceImpl implements HallOfFameService {
             HallOfFame hallOfFame = new HallOfFame();
 
             hallOfFame.setChampionName(hallOfFameDto.getChampionName());
-            hallOfFame.setChampionName(hallOfFameDto.getChampionName());
+            hallOfFame.setChampionship(hallOfFameDto.getChampionship());
             hallOfFame.setImageUrl(hallOfFameDto.getImageUrl());
             hallOfFame.setPublicId(hallOfFameDto.getPublicId());
             hallOfFame.setCreatedAt(LocalDateTime.now());
@@ -85,7 +85,7 @@ public class HallOfFameServiceImpl implements HallOfFameService {
                     && !hallOfFameDto.getPublicId().trim().equals("")) {
                 cloudinary.deleteImage(hallOfFame.getPublicId());
             }
-            hallOfFame.setChampionName(hallOfFameDto.getPublicId());
+            hallOfFame.setPublicId(hallOfFameDto.getPublicId());
             hallOfFame.setUpdatedAt(LocalDateTime.now());
             isUpdate=true;
         }
