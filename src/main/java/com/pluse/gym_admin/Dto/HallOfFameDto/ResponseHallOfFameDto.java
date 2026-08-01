@@ -20,6 +20,7 @@ public class ResponseHallOfFameDto {
     @NotBlank
     private String championship;
 
+    @com.fasterxml.jackson.annotation.JsonProperty("imageUrl")
     private String ImageUrl;
 
     private String publicId;

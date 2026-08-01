@@ -24,7 +24,7 @@ public class HallOfFame {
     @NonNull
     private String championship;
 
-    private String ImageUrl;
+    private String imageUrl;
 
     private String publicId;
 
