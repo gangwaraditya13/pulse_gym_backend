@@ -1,6 +1,7 @@
 package com.pluse.gym_admin.Dto.SpecializedTrainingDto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.bson.types.ObjectId;
 import tools.jackson.databind.annotation.JsonSerialize;
@@ -14,9 +15,9 @@ public class ResponseSpecializedTrainingDto {
     @JsonProperty("_id")
     @JsonSerialize(using = ToStringSerializer.class)
     private ObjectId id;
-    @NonNull
+    @NotBlank
     private String programName;
-    @NonNull
+    @NotBlank
     private String programDescription;
 
 }

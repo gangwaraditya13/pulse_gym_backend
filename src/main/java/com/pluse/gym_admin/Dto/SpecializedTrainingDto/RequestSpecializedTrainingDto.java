@@ -1,5 +1,6 @@
 package com.pluse.gym_admin.Dto.SpecializedTrainingDto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -7,8 +8,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestSpecializedTrainingDto {
-    @NonNull
+    @NotBlank
     private String programName;
-    @NonNull
+    @NotBlank
     private String programDescription;
 }

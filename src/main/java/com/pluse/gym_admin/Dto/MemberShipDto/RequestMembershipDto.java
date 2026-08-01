@@ -1,5 +1,6 @@
 package com.pluse.gym_admin.Dto.MemberShipDto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -7,11 +8,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestMembershipDto {
-    @NonNull
+    @NotBlank
     private String planName;
-    @NonNull
+    @NotBlank
     private String planDuration;
-    @NonNull
+    @NotBlank
     private int planPrice;
 
     private int discount;

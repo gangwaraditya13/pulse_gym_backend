@@ -1,6 +1,7 @@
 package com.pluse.gym_admin.Dto.HallOfFameDto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.bson.types.ObjectId;
 import tools.jackson.databind.annotation.JsonSerialize;
@@ -14,9 +15,9 @@ public class ResponseHallOfFameDto {
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonProperty("_id")
     private ObjectId id;
-    @NonNull
+    @NotBlank
     private String championName;
-    @NonNull
+    @NotBlank
     private String championship;
 
     private String ImageUrl;

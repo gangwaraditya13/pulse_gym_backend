@@ -1,6 +1,7 @@
 package com.pluse.gym_admin.Dto.MemberShipDto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.bson.types.ObjectId;
 import tools.jackson.databind.annotation.JsonSerialize;
@@ -15,11 +16,11 @@ public class ResponseMembershipDto {
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonProperty("_id")
     private ObjectId id;
-    @NonNull
+    @NotBlank
     private String planName;
-    @NonNull
+    @NotBlank
     private String planDuration;
-    @NonNull
+    @NotBlank
     private int planPrice;
 
     private int discount;
