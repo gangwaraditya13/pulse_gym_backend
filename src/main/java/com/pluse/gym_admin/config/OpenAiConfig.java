@@ -14,9 +14,9 @@ public class OpenAiConfig {
     public OpenAPI sagarJewelleryOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Pluse Gym API")
+                        .title("Pulse Gym API")
                         .version("1.0")
-                        .description("Backend API for Pluse Gym App"))
+                        .description("Backend API for Pulse Gym App"))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(new Components()
                         .addSecuritySchemes("bearerAuth", new io.swagger.v3.oas.models.security.SecurityScheme()
